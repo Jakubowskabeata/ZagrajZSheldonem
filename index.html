@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander&display=swap" rel="stylesheet">
+    <link rel="icon" sizes="192x192" href="icon.png">
+ 
+
+    <title>Zagraj z Scheldonem!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Grandstander', cursive;
+        }
+
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            align-items: center;
+            background-color: rgb(130 169 132);
+        }
+
+        h1 {
+
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 3.2vh;
+            background-color: green;
+            width: 100%;
+        }
+
+        h3 {
+            font-size: 2.1vh;
+        }
+
+        .rules {
+            padding: 20px;
+            font-size: 2.3vh;
+            color: white;
+            text-align: center;
+            margin: 0 auto;
+            background-color: rgb(48, 45, 45);
+        }
+
+        .panel {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            margin: 10px 0;
+            flex-basis: 20vh;
+            
+        }
+
+        .panel-left,
+        .panel-right {
+            display: flex;
+            flex-direction: column;
+
+            overflow: hidden;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        .panel-left p,
+        .panel-right p {
+            font-size: 2vh;
+        }
+
+        .winner {
+            align-self: center;
+        }
+
+        h1,
+        h3 {
+            text-transform: uppercase;
+        }
+
+        .select {
+
+            overflow: hidden;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 1200px;
+            flex-shrink: 0;
+        }
+
+        .select img {
+            width: 15%;
+            margin-top: 20px;
+            display: inline-block;
+
+        }
+
+        button {
+            display: block;
+
+            padding: 5px 20px;
+            border: 2px solid black;
+            text-transform: uppercase;
+            color: white;
+            background-color: rgb(20, 20, 20);
+            font-weight: bold;
+            margin: 20px auto;
+            transition: .3s;
+            font-size: 3.5vh;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(49, 155, 72);
+            color: black;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        .moodSheldon {
+            margin: 10 auto;
+            flex-grow: 1;
+            height: 250px;
+            width: 250px;
+
+        }
+
+        .moodSheldon img {
+            width: 230px;
+            height: 230px;
+            margin: 10px;
+        }
+
+        .off {
+            width: 0px;
+            height: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>ZAGRAJ Z SCHELDONEM!</h1>
+
+        <div class="select">
+
+            <h3>Proszę, wybierz:</h3>
+            <!-- data-option - atrybut nadany przez nas  (class, src - atrybuty wbudowane), musi sie zaczynać od data -->
+            <img data-option="papier" class="first" src="papier.png" alt="" title="Papier">
+
+            <img data-option="kamień" src="kamień.png" alt="" title="Kamień">
+
+            <img data-option="nożyczki" src="nożyczki.png" alt="" title="Nożyczki">
+
+            <img data-option="spock" src="spock.png" alt="" title="Spock">
+
+            <img data-option="jaszczurka" src="jaszczurka.png" alt="" title="Jaszczurka">
+
+        </div>
+
+        <button class="start">Zagraj!</button>
+        <div class="panel">
+            <div class="panel-left">
+                <h3>Wyniki gry</h3>
+                <p>Twój wybór: <span data-summary="your-choice"></span></p>
+                <p>Wybór Sheldona: <span data-summary="ai-choice"></span></p>
+                <h3>Zwycięzca gry: </h3>
+                <h3><span class="winner" data-summary="who-win"></span></h3>
+            </div>
+
+            <div class="panel-right">
+                <h3>Aktualne wyniki</h3>
+                <p class="numbers">liczba gier: <span>0</span></p>
+                <p class="wins">wygranych: <span>0</span></p>
+                <p class="losses">przegranych: <span>0</span></p>
+                <p class="draws">remisów: <span>0</span></p>
+            </div>
+        </div>
+        <div class="moodSheldon">
+        </div>
+
+
+        <h4 class="rules">Zasady gry: nożyce tną papier, papier zakrywa kamień, kamień miażdży jaszczurkę, jaszczurka
+            truje
+            Spocka, Spock niszczy
+            nożyce, nożyce tną jaszczurkę, jaszczurka zjada papier, papier bije Spocka, Spock niszczy kamień i - jak to
+            zwykle bywa - kamień łamie nożyce.</h4>
+    </div>
+    <script src="game.js"></script>
+</body>
+
+</html>
